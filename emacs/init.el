@@ -38,7 +38,7 @@
     )
   (idsyr/leader-keys
     "w n" 'evil-window-next
-    "w k" 'evil-window-kill
+    "w k" 'evil-window-delete
     )
   )
 
@@ -97,4 +97,13 @@
 
 (add-hook 'c-mode-hook #'setup-clang-format)
 (add-hook 'c++-mode-hook #'setup-clang-format)
+
+
+
+(use-package eglot
+  :ensure t
+  :hook (prog-mode . eglot-ensure)
+  )
+(custom-set-faces
+ '(eglot-inlay-hint-face ((t (:height 1.0 :family "MononokiNerdFontMono" :slant italic :inherit shadow)))))
 
