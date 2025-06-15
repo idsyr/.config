@@ -1,10 +1,36 @@
 (require 'package)
 (setq package-archives '(("GNU ELPA"    . "https://elpa.gnu.org/packages/")
-			 ("MELPA"       . "https://melpa.org/packages/")
-			 ("NonGNU ELPA" . "https://elpa.nongnu.org/nongnu/")))
+                         ("MELPA"       . "https://melpa.org/packages/")
+                         ("NonGNU ELPA" . "https://elpa.nongnu.org/nongnu/")))
 (package-initialize)
 
 
+
+(mapc (lambda (mode) (funcall mode -1))
+      '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+
+(global-display-line-numbers-mode 1)
+
+(global-visual-line-mode 1)
+
+(setq indent-tabs-mode nil)
+
+(setq backup-directory-alist '((".*" . "~/.emacs_backup")))
+
+(set-frame-parameter (selected-frame) 'buffer-predicate
+		     (lambda (buf) (not (string-match-p "^*" (buffer-name buf)))))
+
+(global-auto-revert-mode t)
+
+(setq dired-kill-when-opening-new-dired-buffer t)
+(eval-after-load 'dired
+  '(define-key dired-mode-map [?\r] 'dired-find-alternate-file))
+(put 'dired-find-alternate-file 'disabled nil)
+
+
+; ------------------------------------------
+;  KEYBINDS
+; ------------------------------------------
 
 (use-package evil
   :ensure t
@@ -43,6 +69,9 @@
   )
 
 
+; ------------------------------------------
+;  THEME
+; ------------------------------------------
 
 (use-package catppuccin-theme
   :ensure t
@@ -51,32 +80,27 @@
   (load-theme 'catppuccin t)
   )
 
-(add-to-list 'default-frame-alist '(font . "MononokiNerdFontMono 11"))
+(add-to-list 'default-frame-alist '(font . "BlexMonoNerdFontMono 11"))
 
-(mapc (lambda (mode) (funcall mode -1))
-      '(menu-bar-mode tool-bar-mode scroll-bar-mode)
-      )
-
-(global-display-line-numbers-mode 1)
-(global-visual-line-mode 1)
-
-
-
-(setq backup-directory-alist '((".*" . "~/.emacs_backup")))
-
-(global-auto-revert-mode t)
-
-(set-frame-parameter (selected-frame) 'buffer-predicate
-		     (lambda (buf) (not (string-match-p "^*" (buffer-name buf)))))
-
-(use-package el-fetch
+(use-package dashboard
   :ensure t
   :config
-  (setq inhibit-startup-screen t)
-  (add-hook 'emacs-startup-hook 'el-fetch)
-  )
+  (dashboard-setup-startup-hook))
+(setq dashboard-startup-banner 'logo)
+(setq dashboard-center-content t)
+(setq dashboard-vertically-center-content t)
+(setq dashboard-startupify-list '(dashboard-insert-newline
+                                  dashboard-insert-newline
+                                  dashboard-insert-newline
+                                  dashboard-insert-banner
+                                  dashboard-insert-newline
+                                  dashboard-insert-init-info
+                                  dashboard-insert-items))
+(setq dashboard-items '((recents . 10)))
 
-
+; ------------------------------------------
+;  AUTOFORMAT
+; ------------------------------------------
 
 (use-package clang-format+
   :ensure t
@@ -99,11 +123,32 @@
 (add-hook 'c++-mode-hook #'setup-clang-format)
 
 
+; ------------------------------------------
+;  SYNTAX CHECK
+; ------------------------------------------
 
 (use-package eglot
   :ensure t
   :hook (prog-mode . eglot-ensure)
   )
-(custom-set-faces
- '(eglot-inlay-hint-face ((t (:height 1.0 :family "MononokiNerdFontMono" :slant italic :inherit shadow)))))
+ '(eglot-inlay-hint-face ((t (:height 1.0 :family "MononokiNerdFontMono" :slant italic :inherit shadow))))
+(setq eglot-ignored-server-capabilites '(:inlayHintProvider))
 
+
+; ------------------------------------------
+;  AUTOCOMPLETE
+; ------------------------------------------
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode)
+  (define-key company-active-map (kbd "<left>") 'company-abort)
+  )
+
+
+; ------------------------------------------
+;  LANG SUPPORT
+; ------------------------------------------
+
+(use-package cmake-mode :ensure t)
