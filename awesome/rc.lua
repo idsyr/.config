@@ -626,16 +626,9 @@ globalkeys = gears.table.join(
     ),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-       {description = "show the menubar", group = "launcher"})
-)
+       {description = "show the menubar", group = "launcher"}),
 
-
--- ---------------------------------------------------
---  KEY BINDINGS 2
--- ---------------------------------------------------
-
-clientkeys = gears.table.join(
- 
+     
    awful.key(
       { modkey }, "m",
       function () awful.util.spawn("dmenu_run") end,
@@ -678,8 +671,17 @@ clientkeys = gears.table.join(
 	 end)
       end,
       {description = "increasure volume", group = "launcher"}
-   ),
+   )
 
+
+)
+
+
+-- ---------------------------------------------------
+--  KEY BINDINGS 2
+-- ---------------------------------------------------
+
+clientkeys = gears.table.join(
 
    
    awful.key(
