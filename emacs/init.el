@@ -1,6 +1,6 @@
 (require 'package)
 (setq package-archives '(("GNU ELPA"    . "https://elpa.gnu.org/packages/")
-                         ("MELPA"       . "https://melpa.org/packages/")
+                         ("MELPA"       . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")
                          ("NonGNU ELPA" . "https://elpa.nongnu.org/nongnu/")))
 (package-initialize)
 
@@ -33,13 +33,11 @@
 ; ------------------------------------------
 
 (use-package evil
-  :ensure t
   :config
   (evil-mode t)
   )
 
 (use-package general
-  :ensure t
   :config
   (general-evil-setup)
   (global-set-key [escape] 'keyboard-escape-quit)
@@ -74,28 +72,27 @@
 ; ------------------------------------------
 
 (use-package catppuccin-theme
-  :ensure t
   :config
-  (setq catppuccin-flavor 'latte)
+  (setq catppuccin-flavor 'frappe)
   (load-theme 'catppuccin t)
   )
 
 (add-to-list 'default-frame-alist '(font . "BlexMonoNerdFontMono 11"))
 
 (use-package dashboard
-  :ensure t
   :config
   (dashboard-setup-startup-hook))
 (setq dashboard-startup-banner 'logo)
 (setq dashboard-center-content t)
 (setq dashboard-vertically-center-content t)
-(setq dashboard-startupify-list '(dashboard-insert-newline
-                                  dashboard-insert-newline
-                                  dashboard-insert-newline
-                                  dashboard-insert-banner
-                                  dashboard-insert-newline
-                                  dashboard-insert-init-info
-                                  dashboard-insert-items))
+(setq dashboard-startupify-list
+      '(dashboard-insert-newline
+        dashboard-insert-newline
+        dashboard-insert-newline
+        dashboard-insert-banner
+        dashboard-insert-newline
+        dashboard-insert-init-info
+        dashboard-insert-items))
 (setq dashboard-items '((recents . 10)))
 
 ; ------------------------------------------
@@ -103,7 +100,6 @@
 ; ------------------------------------------
 
 (use-package clang-format+
-  :ensure t
   :hook ((c-mode   . clang-format+-mode)
 	 (c++-mode . clang-format+-mode))
   )
@@ -128,7 +124,6 @@
 ; ------------------------------------------
 
 (use-package eglot
-  :ensure t
   :hook (prog-mode . eglot-ensure)
   )
  '(eglot-inlay-hint-face ((t (:height 1.0 :family "MononokiNerdFontMono" :slant italic :inherit shadow))))
@@ -140,7 +135,6 @@
 ; ------------------------------------------
 
 (use-package company
-  :ensure t
   :config
   (global-company-mode)
   (define-key company-active-map (kbd "<left>") 'company-abort)
@@ -151,4 +145,6 @@
 ;  LANG SUPPORT
 ; ------------------------------------------
 
-(use-package cmake-mode :ensure t)
+(use-package cmake-mode )
+(use-package lua-mode)
+
