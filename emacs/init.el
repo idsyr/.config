@@ -27,7 +27,6 @@
   '(define-key dired-mode-map [?\r] 'dired-find-alternate-file))
 (put 'dired-find-alternate-file 'disabled nil)
 
-
 ; ------------------------------------------
 ;  KEYBINDS
 ; ------------------------------------------
@@ -71,18 +70,21 @@
 ;  THEME
 ; ------------------------------------------
 
-(use-package catppuccin-theme
+(add-to-list 'default-frame-alist '(alpha-background . 80))
+
+(use-package adwaita-dark-theme
   :config
-  (setq catppuccin-flavor 'frappe)
-  (load-theme 'catppuccin t)
+  (load-theme 'adwaita-dark t)
   )
 
 (add-to-list 'default-frame-alist '(font . "BlexMonoNerdFontMono 11"))
 
+(setq inhibit-startup-screen t)
+
 (use-package dashboard
   :config
   (dashboard-setup-startup-hook))
-(setq dashboard-startup-banner 'logo)
+(setq dashboard-startup-banner '"~/.config/emacs/icon.png")
 (setq dashboard-center-content t)
 (setq dashboard-vertically-center-content t)
 (setq dashboard-startupify-list
@@ -137,7 +139,7 @@
 (use-package company
   :config
   (global-company-mode)
-  (define-key company-active-map (kbd "<left>") 'company-abort)
+  (define-key company-active-map (kbd "<space>") 'company-abort)
   )
 
 
@@ -147,4 +149,3 @@
 
 (use-package cmake-mode )
 (use-package lua-mode)
-
