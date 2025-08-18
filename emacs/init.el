@@ -1,7 +1,8 @@
 (require 'package)
-(setq package-archives '(("GNU ELPA"    . "https://elpa.gnu.org/packages/")
-                         ("MELPA"       . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")
-                         ("NonGNU ELPA" . "https://elpa.nongnu.org/nongnu/")))
+(setq package-archives
+      '(("GNU ELPA"    . "https://elpa.gnu.org/packages/")
+        ("MELPA"       . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")
+        ("NonGNU ELPA" . "https://elpa.nongnu.org/nongnu/")))
 (package-initialize)
 
 
@@ -27,9 +28,10 @@
   '(define-key dired-mode-map [?\r] 'dired-find-alternate-file))
 (put 'dired-find-alternate-file 'disabled nil)
 
-; ------------------------------------------
-;  KEYBINDS
-; ------------------------------------------
+
+;; ------------------------------------------
+;;  KEYBINDS
+;; ------------------------------------------
 
 (use-package evil
   :config
@@ -66,25 +68,22 @@
   )
 
 
-; ------------------------------------------
-;  THEME
-; ------------------------------------------
+;; ------------------------------------------
+;;  THEME
+;; ------------------------------------------
 
-(add-to-list 'default-frame-alist '(alpha-background . 80))
-
-(use-package adwaita-dark-theme
+(use-package gruvbox-theme
   :config
-  (load-theme 'adwaita-dark t)
+  (load-theme 'gruvbox t)
   )
 
-(add-to-list 'default-frame-alist '(font . "BlexMonoNerdFontMono 11"))
+(add-to-list 'default-frame-alist '(font . "IBMPlexMono 11"))
 
 (setq inhibit-startup-screen t)
 
 (use-package dashboard
   :config
   (dashboard-setup-startup-hook))
-(setq dashboard-startup-banner '"~/.config/emacs/icon.png")
 (setq dashboard-center-content t)
 (setq dashboard-vertically-center-content t)
 (setq dashboard-startupify-list
@@ -97,9 +96,10 @@
         dashboard-insert-items))
 (setq dashboard-items '((recents . 10)))
 
-; ------------------------------------------
-;  AUTOFORMAT
-; ------------------------------------------
+
+;; ------------------------------------------
+;;  AUTOFORMAT
+;; ------------------------------------------
 
 (use-package clang-format+
   :hook ((c-mode   . clang-format+-mode)
@@ -121,20 +121,18 @@
 (add-hook 'c++-mode-hook #'setup-clang-format)
 
 
-; ------------------------------------------
-;  SYNTAX CHECK
-; ------------------------------------------
+;; ------------------------------------------
+;;  SYNTAX CHECK
+;; ------------------------------------------
 
 (use-package eglot
   :hook (prog-mode . eglot-ensure)
   )
- '(eglot-inlay-hint-face ((t (:height 1.0 :family "MononokiNerdFontMono" :slant italic :inherit shadow))))
-(setq eglot-ignored-server-capabilites '(:inlayHintProvider))
 
 
-; ------------------------------------------
-;  AUTOCOMPLETE
-; ------------------------------------------
+;; ------------------------------------------
+;;  AUTOCOMPLETE
+;; ------------------------------------------
 
 (use-package company
   :config
@@ -143,9 +141,14 @@
   )
 
 
-; ------------------------------------------
-;  LANG SUPPORT
-; ------------------------------------------
+;; ------------------------------------------
+;;  LANG SUPPORT
+;; ------------------------------------------
 
-(use-package cmake-mode )
+(use-package cmake-mode)
 (use-package lua-mode)
+
+
+;; ------------------------------------------
+;; ------------------------------------------
+
