@@ -133,6 +133,7 @@ awful.screen.connect_for_each_screen(function(s)
       
       s.mytaglist = create_taglist(s)
       s.mytasklist = create_tasklist(s) 
+      s.mypromptbox = awful.widget.prompt()
 
       s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -142,7 +143,6 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             -- mylauncher,
             -- s.mytaglist,
-            -- s.mypromptbox,
 	 },
 	 s.mytasklist, -- Middle widget
 	 { -- Right widgets
@@ -152,6 +152,7 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,       separator,
 	    mytextclock,            separator,
             s.mylayoutbox,          separator,
+            s.mypromptbox,
 	    -- mylauncher,             separator
 	 },
       }
