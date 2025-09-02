@@ -44,3 +44,4 @@ dofile(".config/awesome/signals.lua")
 -- ---------------------------------------------------
 awful.spawn.with_shell("setxkbmap -layout us,ru -option grp:alt_shift_toggle")
 awful.spawn.with_shell("picom --daemon &")
+awful.spawn.with_shell("xinput --set-prop 13 'Coordinate Transformation Matrix' 0.2 0 0 0 0.2 0 0 0 1") -- 12400 dpi full hd 
