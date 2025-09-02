@@ -101,6 +101,7 @@
 ;;  AUTOFORMAT
 ;; ------------------------------------------
 
+(use-package clang-format)
 (use-package clang-format+
   :hook ((c-mode   . clang-format+-mode)
 	 (c++-mode . clang-format+-mode))
@@ -128,6 +129,7 @@
 (use-package eglot
   :hook (prog-mode . eglot-ensure)
   )
+(setq eglot-ignored-server-capabilites '(:inlayHintProvider))
 
 
 ;; ------------------------------------------
@@ -137,7 +139,7 @@
 (use-package company
   :config
   (global-company-mode)
-  (define-key company-active-map (kbd "<space>") 'company-abort)
+  (define-key company-active-map (kbd "<left>") 'company-abort)
   )
 
 
@@ -151,4 +153,3 @@
 
 ;; ------------------------------------------
 ;; ------------------------------------------
-
