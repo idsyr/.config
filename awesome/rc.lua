@@ -43,3 +43,4 @@ dofile(".config/awesome/signals.lua")
 --  AUTOSTART
 -- ---------------------------------------------------
 awful.spawn.with_shell("setxkbmap -layout us,ru -option grp:alt_shift_toggle")
+awful.spawn.with_shell("picom --daemon &")
