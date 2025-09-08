@@ -325,7 +325,13 @@ awful.screen.connect_for_each_screen(function(s)
       s.mytasklist = create_tasklist(s) 
       s.mypromptbox = awful.widget.prompt()
 
-      s.mywibox = awful.wibar({ position = "top", screen = s, })
+      s.mywibox = awful.wibar({ position = "top", screen = s,
+				margins = {
+				   top = beautiful.useless_gap * 2,
+				   left = beautiful.useless_gap * 2,
+				   right = beautiful.useless_gap * 2
+				}
+      })
 
       s.mywibox:setup {
 	 layout = wibox.layout.align.horizontal,
