@@ -39,3 +39,55 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 
+
+      -- s.mywibox =
+      -- 	 awful.wibar(
+      -- 	 { position = "top", screen = s,
+      -- 	   height = 32,
+      -- 	   margins = {
+      -- 	      top = beautiful.useless_gap * 2,
+      -- 	      left = beautiful.useless_gap * 2,
+      -- 	      right = beautiful.useless_gap * 2
+      -- 	   }
+      -- 	 } )
+
+      -- s.mywibox:setup {
+      -- 	 {
+      -- 	    layout = wibox.layout.fixed.horizontal,
+      -- 	    { -- Left widgets
+      -- 	       layout = wibox.layout.fixed.horizontal,
+      -- 	       -- mylauncher,
+      -- 	       -- s.mytaglist,
+      -- 	    },
+      -- 	    --s.mytasklist, -- Middle widget
+      -- 	    { -- Right widgets
+      -- 	       layout = wibox.layout.fixed.horizontal,
+      -- 	       wibox.widget.systray(), separator,
+      -- 	       s.mytaglist,            separator,
+      -- 	       mykeyboardlayout_wrapped,       separator,
+      -- 	       mytextclock_wrapped,            separator,
+      -- 	       s.mylayoutbox,          separator,
+      -- 	       s.mypromptbox,
+      -- 	       -- mylauncher,             separator
+      -- 	    },
+      -- 	 },
+      -- 	 separator, separator,
+      -- 	 -- wibox.widget {
+      -- 	 --    {
+      -- 	 --       layout = wibox.layout.align.horizontal,
+      -- 	 --       separator,
+      -- 	 --       s.mytasklist, -- Middle widget
+      -- 	 --       separator
+      -- 	 --    },
+      -- 	 --    widget = wibox.container.background,
+	    
+      -- 	 --    shape = get_rounded_rect(10),
+	    
+      -- 	 --    border_width = 0,
+      -- 	 --    border_color = get_volumetric_border_gradient(40, 30),
+	    
+      -- 	 --    bg = get_volumetric_plane_gradient(5, 40, beautiful.taglist_bg_occupied),
+      -- 	 -- },
+	 
+      -- 	 layout = wibox.layout.fixed.horizontal,
+      -- }
