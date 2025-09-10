@@ -181,12 +181,12 @@ globalkeys = gears.table.join(
    ),
    awful.key(
       { modkey, "v" }, "i",
-      function () awful.util.spawn("wpctl set-volume @DEFAULT_SOURCE@ 5%+") end,	
+      function () awful.util.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") end,	
       {description = "volume: increase", group = "custom"}
    ),
    awful.key(
       { modkey, "v" }, "d",
-      function () awful.util.spawn("wpctl set-volume @DEFAULT_SOURCE@ 5%-") end,	
+      function () awful.util.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") end,	
       {description = "volume: decrease", group = "custom"}
    )
 )
