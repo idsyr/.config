@@ -1,0 +1,3 @@
+#+author: idsyr
+
+#+html: <p align="center"><img src="wibar.png" /></p>
