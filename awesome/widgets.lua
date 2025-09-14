@@ -148,24 +148,21 @@ local function create_taglist(s, filter, buttons)
 end
 
 -- ---------------------------------------------------
---  MENUBAR
--- ---------------------------------------------------
-menubar.geometry = {
-    x = beautiful.useless_gap * 2,
-    y = beautiful.useless_gap * 4 + 32,
-    width = 1920 - beautiful.useless_gap * 4,
-    height = 32
-}
-
-beautiful.menubar_border_width = 0
-
--- ---------------------------------------------------
 --  EACHSCREEN
 -- ---------------------------------------------------
 local gap_y = beautiful.useless_gap * 2
 local gap_accum_x = 0
 
 awful.screen.connect_for_each_screen(function(s)
+
+      menubar.geometry = {
+	 x = beautiful.useless_gap * 2,
+	 y = beautiful.useless_gap * 4 + 32,
+	 width = s.geometry.width - beautiful.useless_gap * 4,
+	 height = 32
+      }
+      beautiful.menubar_border_width = 0
+
       set_wallpaper(s)
       awful.tag({ "1", "2", "3", "4", "5", }, s, awful.layout.layouts[1])
 
@@ -279,7 +276,7 @@ awful.screen.connect_for_each_screen(function(s)
       -- tasklist
       s.wibox_tasklist = wibox ({
 	    screen = s,
-	    width = 1456 + 32 + beautiful.useless_gap * 3,
+	    width = s.geometry.width - gap_accum_x - beautiful.useless_gap * 4,
 	    height = 32,
 	    shape = gears.shape.rect,
 	    visible = true,
